@@ -239,7 +239,7 @@ class NewPost extends StatelessWidget {
                     ),
                     child: Center(
                       child: Center(
-                        child: ElevatedButton(
+                        child: TextButton(
                           onPressed: () {
                             Navigator.push(
                               context,

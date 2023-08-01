@@ -46,7 +46,7 @@ class SideBar extends StatelessWidget {
                 border: Border.all(color: Color(0xffececec)),
                 color: Color(0xffff3d3d),
               ),
-              child: ElevatedButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,

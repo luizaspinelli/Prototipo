@@ -804,6 +804,7 @@ class Catalog extends StatelessWidget {
                                   onPrimary: Color(0xffffffff), // Text color
                                   side: BorderSide(
                                       color: Color(0xff9d0000)), // Border color
+                                  visualDensity: VisualDensity.compact,
                                 ),
                                 child: Text(
                                   'Achados e Perdidos',
@@ -843,6 +844,7 @@ class Catalog extends StatelessWidget {
                                   onPrimary: Color(0xffffffff), // Text color
                                   side: BorderSide(
                                       color: Color(0xff9d0000)), // Border color
+                                  visualDensity: VisualDensity.compact,
                                 ),
                                 child: Text(
                                   'Denúncias',

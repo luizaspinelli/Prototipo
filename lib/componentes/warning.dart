@@ -163,7 +163,7 @@ class Warning extends StatelessWidget {
                           ),
                           child: Center(
                             child: Center(
-                              child: ElevatedButton(
+                              child: TextButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -176,9 +176,9 @@ class Warning extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: SafeGoogleFont(
                                     'Jaldi',
-                                    fontSize: 21 * ffem,
+                                    fontSize: 19 * ffem,
                                     fontWeight: FontWeight.w400,
-                                    height: 1.69 * ffem / fem,
+                                    height: 1.5 * ffem / fem,
                                     color: Color(0xff000000),
                                   ),
                                 ),
@@ -203,7 +203,7 @@ class Warning extends StatelessWidget {
                           ),
                           child: Center(
                             child: Center(
-                              child: ElevatedButton(
+                              child: TextButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -216,9 +216,9 @@ class Warning extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: SafeGoogleFont(
                                     'Jaldi',
-                                    fontSize: 19 * ffem,
+                                    fontSize: 18 * ffem,
                                     fontWeight: FontWeight.w400,
-                                    height: 1.69 * ffem / fem,
+                                    height: 1.5 * ffem / fem,
                                     color: Color(0xff000000),
                                   ),
                                 ),

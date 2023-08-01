@@ -354,9 +354,9 @@ class ShowPost extends StatelessWidget {
                           // autogrouptvlbrDu (W4d59sDbE54xxiWsTpTVLb)
                           margin: EdgeInsets.fromLTRB(
                               0 * fem, 0 * fem, 0 * fem, 1 * fem),
-                          width: 22 * fem,
-                          height: 22 * fem,
-                          child: ElevatedButton(
+                          width: 35 * fem,
+                          height: 35 * fem,
+                          child: TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -366,8 +366,8 @@ class ShowPost extends StatelessWidget {
                             },
                             child: Image.asset(
                               'assets/componentes/images/auto-group-tvlb.png',
-                              width: 22 * fem,
-                              height: 22 * fem,
+                              width: 35 * fem,
+                              height: 35 * fem,
                             ),
                           ),
                         ),
