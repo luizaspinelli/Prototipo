@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/componentes/catalog.dart';
 import 'package:myapp/utils.dart';
 
 class SideBar extends StatelessWidget {
+  final void Function(String) onSelectCampus; // Callback function
+
+  SideBar({required this.onSelectCampus});
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 100;
@@ -48,13 +51,11 @@ class SideBar extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Catalog()),
-                  );
+                  onSelectCampus(campusName); // Call the callback function
+                  Navigator.pop(context); // Close the sidebar
                 },
                 child: Text(
-                  campusName,
+                  campusName, // Display the campus name as the child
                   textAlign: TextAlign.center,
                   style: SafeGoogleFont(
                     'Jaldi',

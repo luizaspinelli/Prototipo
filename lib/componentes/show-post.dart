@@ -5,7 +5,20 @@ import 'package:myapp/componentes/catalog.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 
-class ShowPost extends StatelessWidget {
+class ShowPost extends StatefulWidget {
+  final Post post;
+
+  ShowPost({required this.post});
+
+  @override
+  _ShowPostState createState() => _ShowPostState();
+}
+
+class _ShowPostState extends State<ShowPost> {
+  List<String> comments = [];
+  TextEditingController commentController = TextEditingController();
+  int userNumber = 1; // Initialize the user number
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -29,25 +42,20 @@ class ShowPost extends StatelessWidget {
                 children: [
                   Container(
                     // autogroupxseffc3 (W4d3t51DoVz9GvzoXjXsef)
-                    margin: EdgeInsets.fromLTRB(
-                        56.5 * fem, 0 * fem, 0 * fem, 19 * fem),
+
                     width: double.infinity,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Center(
-                          // garrafinhaperdidaC6B (5:184)
+                        Expanded(
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 48.5 * fem, 0 * fem),
+                            margin: EdgeInsets.only(right: 5),
                             child: Text(
-                              'Garrafinha perdida!',
+                              widget.post.title,
                               textAlign: TextAlign.center,
                               style: SafeGoogleFont(
                                 'Jaldi',
-                                fontSize: 26 * ffem,
-                                fontWeight: FontWeight.w400,
-                                height: 1.69 * ffem / fem,
+                                fontSize: 21,
                                 color: Color(0xff000000),
                               ),
                             ),
@@ -104,7 +112,7 @@ class ShowPost extends StatelessWidget {
                         Center(
                           // usuario1XAP (5:220)
                           child: Text(
-                            'usuario_1',
+                            widget.post.user,
                             textAlign: TextAlign.center,
                             style: SafeGoogleFont(
                               'Jaldi',
@@ -130,32 +138,41 @@ class ShowPost extends StatelessWidget {
                           // image7MQK (5:185)
                           left: 44 * fem,
                           top: 26.5 * fem,
+
                           child: Align(
                             child: SizedBox(
                               width: 203 * fem,
                               height: 181 * fem,
-                              child: Image.asset(
-                                'assets/componentes/images/image-7.png',
-                                fit: BoxFit.cover,
+                              child: Container(
+                                margin:
+                                    EdgeInsets.only(top: 4), // Margem desejada
+                                child: Image.asset(
+                                  widget.post.image,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
                         ),
                         Positioned(
-                          // campusdovalefA7 (5:221)
-                          left: 0 * fem,
-                          top: 0 * fem,
+                          left: 0,
+                          top: 0,
                           child: Align(
-                            child: SizedBox(
-                              width: 100 * fem,
-                              height: 28 * fem,
+                            alignment: Alignment
+                                .topLeft, // Ajuste o alinhamento conforme necessário
+                            child: Container(
+                              margin: EdgeInsets.only(bottom: 8),
+                              // Use um Container para controlar o tamanho do título
+                              width:
+                                  300, // Ajuste o tamanho conforme necessário
                               child: Text(
-                                'Campus do Vale',
-                                style: SafeGoogleFont(
-                                  'Jaldi',
-                                  fontSize: 16 * ffem,
+                                widget.post.campus,
+                                style: TextStyle(
+                                  fontFamily:
+                                      'Jaldi', // Use 'TextStyle' para definir o estilo da fonte
+                                  fontSize:
+                                      13, // Ajuste o tamanho da fonte conforme necessário
                                   fontWeight: FontWeight.w400,
-                                  height: 1.69 * ffem / fem,
                                   color: Color(0xff000000),
                                 ),
                               ),
@@ -170,7 +187,7 @@ class ShowPost extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(
                         215 * fem, 0 * fem, 0 * fem, 2.5 * fem),
                     child: Text(
-                      '21/07/2023',
+                      widget.post.date,
                       textAlign: TextAlign.right,
                       style: SafeGoogleFont(
                         'Jaldi',
@@ -189,7 +206,7 @@ class ShowPost extends StatelessWidget {
                       maxWidth: 275 * fem,
                     ),
                     child: Text(
-                      'Garrafinha perdida no banco em frente ao prédio 43425.  \nMeu contato: (51)99999-5050.',
+                      widget.post.description,
                       style: SafeGoogleFont(
                         'Jaldi',
                         fontSize: 16 * ffem,
@@ -215,108 +232,6 @@ class ShowPost extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    // autogroup7unsnnT (W4d4X8mo5hkvJeeVLs7Uns)
-                    margin: EdgeInsets.fromLTRB(
-                        6 * fem, 0 * fem, 19 * fem, 0 * fem),
-                    padding: EdgeInsets.fromLTRB(
-                        8 * fem, 4 * fem, 81 * fem, 4 * fem),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xedededed)),
-                      color: Color(0xffffffff),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // autogroupt1noe3y (W4d4dJGC5fHSDCbdf8T1no)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 1 * fem, 11 * fem, 0 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              4 * fem, 4 * fem, 4.13 * fem, 4.13 * fem),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0x7f000000)),
-                            color: Color(0x7fd9d9d9),
-                            borderRadius: BorderRadius.circular(13 * fem),
-                          ),
-                          child: Center(
-                            // image11XtT (5:235)
-                            child: SizedBox(
-                              width: 17.88 * fem,
-                              height: 17.88 * fem,
-                              child: Image.asset(
-                                'assets/componentes/images/image-11.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          // usuario2tutcomele3M1 (5:227)
-                          'usuario_2: Tu tá com ele?',
-                          style: SafeGoogleFont(
-                            'Jaldi',
-                            fontSize: 17 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5861154444 * ffem / fem,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    // autogroups9u1Z4T (W4d4ixmRNs7rZGspS8S9u1)
-                    margin: EdgeInsets.fromLTRB(
-                        6 * fem, 0 * fem, 19 * fem, 12 * fem),
-                    padding: EdgeInsets.fromLTRB(
-                        8 * fem, 3 * fem, 31 * fem, 5 * fem),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xedededed)),
-                      color: Color(0xffffffff),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // autogrouptvcb3VR (W4d4qHvCwjsjeeicbUtVCB)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 1 * fem, 11 * fem, 0 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              4 * fem, 4 * fem, 4.13 * fem, 4.13 * fem),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0x7f000000)),
-                            color: Color(0x7fd9d9d9),
-                            borderRadius: BorderRadius.circular(13 * fem),
-                          ),
-                          child: Center(
-                            // image12MFD (18:625)
-                            child: SizedBox(
-                              width: 17.88 * fem,
-                              height: 17.88 * fem,
-                              child: Image.asset(
-                                'assets/componentes/images/image-12.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          // usuario3vouavisarparaaanavSj (5:233)
-                          'usuario_3: Vou avisar para a Ana.',
-                          style: SafeGoogleFont(
-                            'Jaldi',
-                            fontSize: 17 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5861154444 * ffem / fem,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
                     // autogroupwotmEyD (W4d4yHgtBnwGcHTwDiWoTm)
                     margin: EdgeInsets.fromLTRB(
                         9 * fem, 0 * fem, 16 * fem, 0 * fem),
@@ -325,19 +240,18 @@ class ShowPost extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.grey, // Define a cor da borda para cinza
-                        width: 1.0, // Define a espessura da borda
+                        color: Colors.grey,
+                        width: 1.0,
                       ),
-                      borderRadius:
-                          BorderRadius.circular(25), // Define o raio dos cantos
-                      color: Colors
-                          .white, // Define a cor de fundo para a barra de comentário
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: TextField(
+                            controller: commentController,
                             decoration: InputDecoration(
                               hintText: 'Comente...',
                               hintStyle: TextStyle(
@@ -352,22 +266,28 @@ class ShowPost extends StatelessWidget {
                         ),
                         Container(
                           // autogrouptvlbrDu (W4d59sDbE54xxiWsTpTVLb)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 1 * fem),
                           width: 35 * fem,
                           height: 35 * fem,
                           child: TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowPost()),
-                              );
+                              String comment = commentController.text;
+                              if (comment.isNotEmpty) {
+                                setState(() {
+                                  comments.insert(
+                                    0,
+                                    'usuario_$userNumber: $comment',
+                                  );
+                                  commentController.clear();
+                                  userNumber++; // Increment the user number
+                                });
+                              }
                             },
-                            child: Image.asset(
-                              'assets/componentes/images/auto-group-tvlb.png',
-                              width: 35 * fem,
-                              height: 35 * fem,
+                            child: Container(
+                              child: Image.asset(
+                                'assets/componentes/images/auto-group-tvlb.png',
+                                width: 35 * fem,
+                                height: 35 * fem,
+                              ),
                             ),
                           ),
                         ),
@@ -377,6 +297,25 @@ class ShowPost extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          Column(
+            children: List.generate(comments.length, (index) {
+              return Container(
+                margin: EdgeInsets.symmetric(vertical: 8),
+                padding: EdgeInsets.all(10),
+                width: 285,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border:
+                      Border.all(color: Color(0xff989898)), // Add black border
+                ),
+                child: Text(
+                  comments[index],
+                  style: TextStyle(fontSize: 16),
+                ),
+              );
+            }),
           ),
         ],
       ),

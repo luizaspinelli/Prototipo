@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/componentes/catalog.dart';
 
-class NewPost extends StatelessWidget {
+class NewPost extends StatefulWidget {
+  @override
+  _NewPostState createState() => _NewPostState();
+}
+
+class _NewPostState extends State<NewPost> {
+  String? _selectedCampus;
+
   @override
   Widget build(BuildContext context) {
-    String? _selectedCampus;
     List<String> _campusOptions = [
       'Campus do Centro',
       'Campus do Vale',
@@ -172,12 +178,12 @@ class NewPost extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.fromLTRB(0, 8, 236, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 8, 236, 5),
                     child: const Text(
                       'Campus:',
                       style: TextStyle(
                         fontFamily: 'Jaldi',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         height: 1,
                         color: Color(0xff000000),
@@ -185,39 +191,60 @@ class NewPost extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(4, 8, 5, 20),
-                    width: 300,
+                    margin: EdgeInsets.fromLTRB(8 * fem, 3 * fem, 15, 15 * fem),
+                    width: 280,
                     height: 35,
-                    decoration: BoxDecoration(
-                      // Adicione sombra ao Container que envolve o DropdownButton
-                      color: Colors
-                          .white, // Defina a cor de fundo para que a sombra seja visível
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(
-                              0.5), // Defina a cor e a opacidade da sombra
-                          spreadRadius: 2, // Define a propagação da sombra
-                          blurRadius: 5, // Define o desfoque da sombra
-                          offset: Offset(0,
-                              3), // Define o deslocamento (eixo X, eixo Y) da sombra
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(13),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: _selectedCampus,
+                                    items: _campusOptions.map((String campus) {
+                                      return DropdownMenuItem<String>(
+                                        value: campus,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left:
+                                                  6), // Adicionar margem à esquerda do texto
+                                          child: Text(
+                                            campus,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: Color.fromARGB(
+                                                  255, 111, 117, 122),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        _selectedCampus = newValue;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: DropdownButton<String>(
-                      isExpanded: true,
-                      value: _selectedCampus,
-                      items: _campusOptions.map((String campus) {
-                        return DropdownMenuItem<String>(
-                          value: campus,
-                          child: Text(campus),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        // Atualiza a variável local da opção selecionada
-                        _selectedCampus = newValue ?? _selectedCampus;
-                      },
-                      underline: Container(),
                     ),
                   ),
                   Container(
@@ -241,10 +268,21 @@ class NewPost extends StatelessWidget {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
+                            Post newPost = Post(
+                                category: "Denuncias",
+                                title: "Sala sem luz!",
+                                campus: "Campus Litoral",
+                                date: "29/08/2023",
+                                image: "assets/componentes/images/image-9.png",
+                                description:
+                                    "A sala de aula número 112 do prédio 32542 está sem iluminação faz uma semana.",
+                                user: "usuario_6");
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Catalog()),
+                                  builder: (context) =>
+                                      Catalog(newPost: newPost)),
                             );
                           },
                           child: Text(
