@@ -9,6 +9,15 @@ class NewPost extends StatefulWidget {
 
 class _NewPostState extends State<NewPost> {
   String? _selectedCampus;
+  TextEditingController _tituloController = TextEditingController();
+  TextEditingController _descricaoController = TextEditingController();
+
+  @override
+  void dispose() {
+    _tituloController.dispose();
+    _descricaoController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +31,10 @@ class _NewPostState extends State<NewPost> {
     double baseWidth = 360;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+    String title = _tituloController.text;
+    String category = title.toLowerCase().contains('perdid')
+        ? 'Achados e Perdidos'
+        : 'Denuncias';
     return Scaffold(
       body: ListView(
         children: <Widget>[
@@ -125,11 +138,10 @@ class _NewPostState extends State<NewPost> {
                           top: 0 * fem,
                           child: Align(
                             child: SizedBox(
-                              width: 280 *
-                                  fem, // Defina a largura desejada para o campo de texto
+                              width: 280 * fem,
                               height: 27 * fem,
                               child: TextField(
-                                // Substitua o widget Text pelo TextField
+                                controller: _tituloController,
                                 decoration: InputDecoration(
                                   hintText: 'Título',
                                   hintStyle: TextStyle(
@@ -156,12 +168,14 @@ class _NewPostState extends State<NewPost> {
                     height: 200,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        width: 1.0, // Largura da borda
-                        color: Colors.black, // Cor da borda
+                        width: 1.0,
+                        color: Colors.black,
                       ),
                     ),
                     child: TextField(
-                      maxLines: 200, // Permite múltiplas linhas de texto
+                      controller:
+                          _descricaoController, // Usando o controlador aqui
+                      maxLines: 200,
                       decoration: InputDecoration(
                         hintText:
                             'Descrição:', // Texto de sugestão dentro do campo
@@ -269,13 +283,12 @@ class _NewPostState extends State<NewPost> {
                         child: TextButton(
                           onPressed: () {
                             Post newPost = Post(
-                                category: "Denuncias",
-                                title: "Sala sem luz!",
-                                campus: "Campus Litoral",
+                                category: category,
+                                title: title,
+                                campus: _selectedCampus!,
                                 date: "29/08/2023",
                                 image: "assets/componentes/images/image-9.png",
-                                description:
-                                    "A sala de aula número 112 do prédio 32542 está sem iluminação faz uma semana.",
+                                description: _descricaoController.text,
                                 user: "usuario_6");
 
                             Navigator.push(
